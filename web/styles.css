@@ -36,3 +36,30 @@
  .mobile-nav button span{font-size:10px;white-space:nowrap}
 }
 @media(prefers-reduced-motion:reduce){.mobile-nav{scroll-behavior:auto}.mobile-nav button{transition:none}}
+
+
+/* v5: Android 15/16 edge-to-edge display — native Capacitor SystemBars insets.
+ * Capacitor 8 provides --safe-area-inset-* on Android, including fallbacks for
+ * older WebViews. Normal desktop browsers fall back to CSS env() values.
+ * Never add a hardcoded 24px/40px: status-bar heights vary by device/cutout.
+ */
+:root {
+ --canteen-inset-top: var(--safe-area-inset-top, env(safe-area-inset-top, 0px));
+ --canteen-inset-bottom: var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px));
+}
+.topbar { padding-top: calc(23px + var(--canteen-inset-top)); }
+.sidebar { padding-top: calc(27px + var(--canteen-inset-top)); }
+.overlay {
+ padding-top: calc(18px + var(--canteen-inset-top));
+ padding-bottom: calc(18px + var(--canteen-inset-bottom));
+}
+@media (max-width: 900px) {
+ .topbar { padding-top: calc(17px + var(--canteen-inset-top)); }
+ .mobile-nav { padding-bottom: calc(8px + var(--canteen-inset-bottom)); }
+ .fab { bottom: calc(85px + var(--canteen-inset-bottom)); }
+ .toast-root { bottom: calc(92px + var(--canteen-inset-bottom)); }
+ .content { padding-bottom: calc(120px + var(--canteen-inset-bottom)); }
+}
+@media (max-width: 600px) {
+ .modal { max-height: calc(100dvh - 36px - var(--canteen-inset-top) - var(--canteen-inset-bottom)); }
+}

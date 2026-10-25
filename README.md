@@ -1,4 +1,13 @@
-# CanteenLedger v3 — School Canteen & Cooperative Cash
+# CanteenLedger v5 — School Canteen & Cooperative Cash
+
+## v5 Android system bars / safe-area fix
+
+**Fixed:** The status-bar clock/camera notch overlapped the breadcrumb/header on some Android phones. Capacitor 8's SystemBars inset handling (`insetsHandling: "css"`) now supplies safe-area values on Android 15/16 and older WebViews. CanteenLedger consumes those insets when laying out the top header, desktop/tablet sidebar, bottom swipe navigation, floating action button, toasts, and dialogs. Light/dark themes also update the OS status-bar icon color.
+
+**Rebuild required:** The status bar is part of the native Android packaging; changing CSS alone in an old APK is not enough. Upload the new project files, run the included GitHub Actions workflow and download its artifact named `CanteenLedger-v5-Safe-Area-Debug-APK` after a successful run. Install the APK from that newest run. The installable APK has **not** been compiled or tested on your specific handset here. Before uninstalling or replacing an APK, export **Settings → Download JSON backup**; Android's debug signing key can change between builds.
+
+**Technical rationale:** Android 15+ draws the app behind system bars when targeting new SDKs. On Capacitor 8, `StatusBar.overlaysWebView: false` does not fix this on Android API 36. Use `SystemBars.insetsHandling` and CSS safe-area insets instead.
+
 
 Complete **offline-first** school canteen financial record app, compatible with desktop browsers and Android through Capacitor. Records stay on the current device in IndexedDB. No account or cloud database is required.
 

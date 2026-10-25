@@ -2,5 +2,16 @@
   "appId": "ph.edu.canteenledger",
   "appName": "CanteenLedger",
   "webDir": "dist",
-  "android": { "backgroundColor": "#F8F8F5", "allowMixedContent": false }
+  "android": {
+    "backgroundColor": "#F8F8F5",
+    "allowMixedContent": false
+  },
+  "plugins": {
+    "SystemBars": {
+      "insetsHandling": "css",
+      "initialViewportFitValueHint": "cover",
+      "style": "LIGHT",
+      "hidden": false
+    }
+  }
 }

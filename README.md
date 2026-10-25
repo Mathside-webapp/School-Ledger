@@ -2,6 +2,15 @@
 
 Complete **offline-first** school canteen financial record app, compatible with desktop browsers and Android through Capacitor. Records stay on the current device in IndexedDB. No account or cloud database is required.
 
+
+## v4 Android icon and installation fix
+
+- **Launcher branding:** Android uses adaptive icons on modern phones. v4 updates both adaptive and legacy CanteenLedger icons (including the round and Android themed variants), and explicitly updates AndroidManifest.xml during the GitHub build. This fixes the generated default launcher icon that was appearing as Still Pomodoro or another app. A blue Still Pomodoro icon is NOT part of the CanteenLedger resources; if it persists, double-check which GitHub repository and workflow artifact you installed.
+- **Build the correct app:** After replacing your repository files, run **Actions → Build CanteenLedger Android APK**. Download **CanteenLedger-v4-Branded-Debug-APK**, extract it and install its `app-debug.apk`; do not reuse an older `app-debug.apk` from Downloads. Verify the run corresponds to your newest commit.
+- **Play Protect:** A debug APK distributed outside Google Play may trigger Google's unfamiliar-developer warning. This is not proof the app is malicious or proof it is safe. Verify the APK came from *your own GitHub build and this exact project*; consider Play Protect's scanning options. Do not disable Play Protect globally. If Android offers `Install anyway`, proceed only if you have verified the APK and accept the risk. If it refuses installation, inspect the phone's full error; a different signing key from a previous debug build can require uninstalling the old app (after exporting a JSON backup).
+- **Updates/data:** Android debug-signing certificates may change each CI run. Save a JSON backup before replacing/uninstalling; your financial records in IndexedDB can be erased by uninstalling. For regular deployment, configure your own persistent release signing key in GitHub Actions rather than relying on the runner's debug key.
+- **Limits:** Updating icon resources does not establish Play Protect approval. Google determines reputation and warnings. Android builds are configured but must still be tested by a real successful GitHub run and on a device.
+
 ## What changed in v3
 
 **Simple sales:** On **Record Sale**, enter only **date**, **Foods / Goods**, and **total money received in pesos**. Product names and optional remarks have been removed from the sales form. There is no product name, remarks, quantity, unit price, line-total, or Products page. Every sales entry goes into either the Food or Goods fund.
@@ -41,7 +50,7 @@ All monetary values are stored as **integer centavos**. Corrections keep an audi
 
 1. Create a GitHub repository. Upload **the contents of the extracted ZIP**, including hidden `.github/workflows/build-android.yml`, into the repository root, rather than uploading only the ZIP.
 2. Open **Actions → Build CanteenLedger Android APK → Run workflow**.
-3. After a successful run, open **Artifacts → CanteenLedger-Debug-APK** and extract `app-debug.apk` from the artifact ZIP.
+3. After a successful run, open **Artifacts → CanteenLedger-v4-Branded-Debug-APK** and extract `app-debug.apk` from the artifact ZIP.
 4. Transfer APK to Android and install it, allowing installation from your chosen file manager when prompted.
 
 The workflow runs `npm test`, packages static assets, generates Capacitor Android, and compiles `assembleDebug` using GitHub's Android SDK. Android device compilation has not yet been verified in this environment. This is a debug APK for testing, not Play Store distribution. Debug signing keys can change across GitHub runs; **export a JSON backup before uninstalling the app or replacing an incompatible APK**. Removing the app can erase all locally stored records.

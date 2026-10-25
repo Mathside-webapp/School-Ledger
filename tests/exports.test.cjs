@@ -1,0 +1,2 @@
+const fs=require('node:fs'),assert=require('node:assert/strict'),test=require('node:test');
+test('report exporters are offline and self-contained',()=>{const s=fs.readFileSync(__dirname+'/../web/exports.js','utf8');assert.ok(s.includes('application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'));assert.ok(s.includes('application/pdf'));assert.ok(s.includes('text/csv'));assert.ok(!/fetch\s*\(/.test(s));});

@@ -1,0 +1,21 @@
+{
+  "name": "canteenledger-school-finance",
+  "version": "3.0.0",
+  "private": true,
+  "description": "Offline school canteen treasurer ledger for Android and browsers",
+  "scripts": {
+    "test": "node --test tests/*.test.cjs",
+    "build": "node tools/build.mjs",
+    "android:init": "npm run build && npx cap add android",
+    "android:sync": "npm run build && npx cap sync android"
+  },
+  "dependencies": {
+    "@capacitor/core": "^8.0.0",
+    "@capacitor/filesystem": "^8.0.0",
+    "@capacitor/share": "^8.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.0.0",
+    "@capacitor/android": "^8.0.0"
+  }
+}

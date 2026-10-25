@@ -1,0 +1,98 @@
+
+> canteenledger-school-finance@3.0.0 test
+> node --test tests/*.test.cjs
+
+TAP version 13
+# Subtest: exact centavos and validation
+ok 1 - exact centavos and validation
+  ---
+  duration_ms: 0.879396
+  type: 'test'
+  ...
+# Subtest: sales snapshot and cash calculation
+ok 2 - sales snapshot and cash calculation
+  ---
+  duration_ms: 3.246887
+  type: 'test'
+  ...
+# Subtest: weekly boundaries across year
+ok 3 - weekly boundaries across year
+  ---
+  duration_ms: 0.222706
+  type: 'test'
+  ...
+# Subtest: expense reversal restores balance once
+ok 4 - expense reversal restores balance once
+  ---
+  duration_ms: 0.257859
+  type: 'test'
+  ...
+# Subtest: running balances sorted by date
+ok 5 - running balances sorted by date
+  ---
+  duration_ms: 6.499642
+  type: 'test'
+  ...
+# Subtest: transaction product price snapshot
+ok 6 - transaction product price snapshot
+  ---
+  duration_ms: 0.18589
+  type: 'test'
+  ...
+# Subtest: Philippine canteen cash example
+ok 7 - Philippine canteen cash example
+  ---
+  duration_ms: 0.410739
+  type: 'test'
+  ...
+# Subtest: report exporters are offline and self-contained
+ok 8 - report exporters are offline and self-contained
+  ---
+  duration_ms: 0.849191
+  type: 'test'
+  ...
+# Subtest: food/goods sales are direct amounts with no quantity needed
+ok 9 - food/goods sales are direct amounts with no quantity needed
+  ---
+  duration_ms: 2.526981
+  type: 'test'
+  ...
+# Subtest: expenses deduct only once from the selected fund
+ok 10 - expenses deduct only once from the selected fund
+  ---
+  duration_ms: 0.893948
+  type: 'test'
+  ...
+# Subtest: coop add/subtract preserve member name snapshot; reversals preserve funding source
+ok 11 - coop add/subtract preserve member name snapshot; reversals preserve funding source
+  ---
+  duration_ms: 0.37139
+  type: 'test'
+  ...
+# Subtest: legacy backups retain unmatched funds without inventing membership
+ok 12 - legacy backups retain unmatched funds without inventing membership
+  ---
+  duration_ms: 0.402698
+  type: 'test'
+  ...
+# Subtest: money validation rejects excess decimals and empty source
+ok 13 - money validation rejects excess decimals and empty source
+  ---
+  duration_ms: 0.312872
+  type: 'test'
+  ...
+# Subtest: simplified sales need no description or remarks and label their fund
+ok 14 - simplified sales need no description or remarks and label their fund
+  ---
+  duration_ms: 0.283678
+  type: 'test'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 14
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 61.530627

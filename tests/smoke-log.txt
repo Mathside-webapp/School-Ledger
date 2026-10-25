@@ -1,0 +1,26 @@
+heading Good day, Treasurer.
+errors []
+BODY ERROR: FINANCIAL OVERVIEW
+Good day, Treasurer.
+
+Here’s how your canteen funds are doing today.
+
+Oct 25, 2026
+Available cash balance
+₱0.00
+All recorded cash movements
+Sales today
+₱0.00
+Cash received from sale
+sale heading Record a sale
+balance after sale ₱375.00
+balance after expense ₱295.00
+ledger rows 2
+xlsx 11420
+xlsx zip files 6 None
+csv 2168
+pdf 262136
+pdf pages 2 page rect Rect(0.0, 0.0, 595.0, 842.0)
+mobile overflow False
+mobile sale overflow False
+errors []

@@ -1,0 +1,6 @@
+{
+  "appId": "ph.edu.canteenledger",
+  "appName": "CanteenLedger",
+  "webDir": "dist",
+  "android": { "backgroundColor": "#F8F8F5", "allowMixedContent": false }
+}

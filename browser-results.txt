@@ -1,0 +1,9 @@
+start Good day, Treasurer.
+food sale balance ₱2,500.00
+coop title Cooperative Money
+members 1
+funds ['₱1,700.00', '₱500.00', '₱700.00', '₱0.00']
+export xlsx 6726
+export csv 764
+export pdf 103124
+errors []

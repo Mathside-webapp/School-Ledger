@@ -49,15 +49,28 @@ jobs:
         run: npx cap sync android
       - name: Install Android icon and splash artwork
         run: python3 tools/patch_android.py
+      - name: Verify branded launcher resources
+        shell: bash
+        run: |
+          test -s android/app/src/main/res/drawable-nodpi/canteen_launcher_foreground.png
+          grep -q 'canteen_launcher_foreground' android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+          grep -q 'canteen_launcher_foreground' android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+          echo 'CanteenLedger launcher icon resources verified.'
       - name: Compile Android debug APK
         working-directory: android
         run: |
           chmod +x gradlew
           ./gradlew --no-daemon assembleDebug
+      - name: Verify compiled app identity
+        shell: bash
+        run: |
+          APK=android/app/build/outputs/apk/debug/app-debug.apk
+          test -s "$APK"
+          "$ANDROID_SDK_ROOT/build-tools/36.0.0/aapt" dump badging "$APK" | grep -E '^(package:|application-label:|application-icon-)' | head -15
       - name: Upload installable APK
         uses: actions/upload-artifact@v4
         with:
-          name: CanteenLedger-Debug-APK
+          name: CanteenLedger-v4-Branded-Debug-APK
           path: android/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
           retention-days: 30
